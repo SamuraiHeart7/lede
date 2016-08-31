@@ -14,7 +14,7 @@
 /include/ "mt7620a.dtsi"
 
 / {
-	compatible = "BR-6478AC-V2", "ralink,mt7620a-soc";
+	compatible = "edimax,br-6478ac-v2", "ralink,mt7620a-soc";
 	model = "Edimax BR-6478ACV2";
 
 	chosen {
