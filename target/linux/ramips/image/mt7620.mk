@@ -411,3 +411,23 @@ define Device/dch-m225
   DEVICE_PACKAGES := kmod-mt76
 endef
 TARGET_DEVICES += dch-m225
+
+define Device/br-6478ac-v2
+  DTS := BR-6478AC-V2
+  DEVICE_TITLE := Edimax BR-6478AC-V2
+  BLOCKSIZE := 4k
+  IMAGES += factory.bin
+  IMAGE_SIZE := $(ralink_default_fw_size_8M)
+  IMAGE/sysupgrade.bin := \
+	append-kernel | pad-offset $$$$(BLOCKSIZE) 64 | append-rootfs | \
+	seama -m "dev=/dev/mtdblock/2" -m "type=firmware" | \
+	pad-rootfs | check-size $$$$(IMAGE_SIZE)
+  IMAGE/factory.bin := \
+	append-kernel | pad-offset $$$$(BLOCKSIZE) 64 | \
+	append-rootfs | pad-rootfs -x 64 | \
+	seama -m "dev=/dev/mtdblock/2" -m "type=firmware" | \
+	seama-seal -m "signature=wapn22_dlink.2013gui_dap1320b" | \
+	check-size $$$$(IMAGE_SIZE)
+  DEVICE_PACKAGES := kmod-mt76
+endef
+TARGET_DEVICES += br-6478ac-v2
