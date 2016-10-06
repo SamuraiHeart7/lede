@@ -188,6 +188,7 @@ ramips_setup_interfaces()
 		ucidef_add_switch "switch0" \
 			"1:lan" "0:wan" "6@eth0"
 		;;
+	br-6478ac-v2|\
 	e1700|\
 	mt7620a_mt7530)
 		ucidef_add_switch "switch1" \
