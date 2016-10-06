@@ -18,10 +18,16 @@
 	model = "Edimax BR-6478ACV2";
 
 	chosen {
-                bootargs = "console=ttyS0,57600";
+			bootargs = "console=ttyS0,57600";
 	};
 
 	palmbus@10000000 {
+		gpio1: gpio@638 {
+			satus = "okay";
+		};
+		gpio2: gpio@660 {
+			status = "okay";
+		};
 			spi@b00 {
 			status = "okay";
 
@@ -74,6 +80,14 @@
 		};
 	};
 
+	usbphy: usbphy {
+		compatible = "mediatek,mt7620-usbphy";
+		#phy-cells = <1>;
+		//    resets = <&rstctrl 22 &rstctrl 25>;
+		resets = <&rstctrl 22 &rstctrl 19>;
+		reset-names = "host", "device";
+	};
+ 
 	ethernet@10100000 {
 		status = "okay";
 		mtd-mac-address = <&factory 0x28>;
@@ -138,14 +152,14 @@
 
 		reset {
 			label = "reset";
-			gpios = <&gpio0 1 0>;
-			linux,code = <0x198>;
+			gpios = <&gpio0 12 1>;
+			linux,code = <0x101>;
 		};
 
 		wps {
 			label = "wps";
-			gpios = <&gpio0 2 0>;
-			linux,code = <0x211>;
+			gpios = <&gpio0 1 1>;
+			linux,code = <0x100>;
 		};
 	};
 
@@ -153,13 +167,20 @@
 		compatible = "gpio-leds";
 
 		power {
-			label = "br-6478ac-v2:green:power";
+			label = "br-6478ac-v2:white:power";
+			gpios = <&gpio0 11 1>;
+		};
+		wan {
+			label = "br-6478ac-v2:blue:wan";
+			gpios = <&gpio0 7 1>;
+		};
+		wlan {
+            		label = "br-6478ac-v2:blue:wlan";
 			gpios = <&gpio0 10 1>;
 		};
-
-		wan {
-			label = "br-6478ac-v2:green:wps";
-			gpios = <&gpio0 12 1>;
+		usb {
+			label = "br-6478ac-v2:blue:usb";
+			gpios = <&gpio0 14 1>;
 		};
 	};
 
@@ -169,10 +190,14 @@
 
 	ehci@101c0000 {
 		status = "okay";
+		interrupt-parent = <&intc>;
+		interrupts = <18>;
 	};
 
 	ohci@101c1000 {
 		status = "okay";
+		interrupt-parent = <&intc>;
+		interrupts = <18>;
 	};
 };
 

@@ -35,6 +35,9 @@ get_status_led() {
 	xdxrn502j)
 		status_led="$board:green:power"
 		;;
+    br-6478ac-v2)
+		status_led="$board:white:power"
+		;;
 	a5-v11|\
 	cs-qr10|\
 	d105|\

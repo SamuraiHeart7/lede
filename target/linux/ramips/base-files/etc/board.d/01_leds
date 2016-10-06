@@ -74,6 +74,12 @@ bc2)
 br-6425)
 	set_wifi_led "$board:orange:wlan"
 	;;
+br-6478ac-v2)
+	ucidef_set_led_default "power" "POWER" "$board:white:power" "1"
+	ucidef_set_led_default "wan" "WAN LED" "$board:blue:wan" "1"
+	set_wifi_led "$board:blue:wlan"
+	set_usb_led "$board:blue:usb"
+	;;
 broadway)
 	set_usb_led "$board:red:diskmounted"
 	set_wifi_led "$board:red:wps_active"
