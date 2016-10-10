@@ -417,10 +417,10 @@ define Device/br-6478ac-v2
   DEVICE_TITLE := Edimax BR-6478AC-V2
   BLOCKSIZE := 4k
   IMAGES += factory.bin
-  IMAGE_SIZE := $(ralink_default_fw_size_8M)
+  IMAGE_SIZE := 7616k
   IMAGE/sysupgrade.bin := \
 	append-kernel | pad-offset $$$$(BLOCKSIZE) 64 | append-rootfs | \
-	seama -m "dev=/dev/mtdblock/2" -m "type=firmware" | \
+	seama -m "dev=/dev/mtdblock/5" -m "type=firmware" | \
 	pad-rootfs | check-size $$$$(IMAGE_SIZE)
   IMAGE/factory.bin := \
 	append-kernel | pad-offset $$$$(BLOCKSIZE) 64 | \
