@@ -39,31 +39,31 @@
 				reg = <0 0>;
 				linux,modalias = "m25p80", "mx25l6405d";
 				spi-max-frequency = <10000000>;
-	
+
 				partition@0 {
 					label = "u-boot";
 					reg = <0x0 0x30000>;
 					read-only;
 				};
-	
+
 				partition@30000 {
 					label = "u-boot-env";
 					reg = <0x30000 0x10000>;
 					read-only;
 				};
-	
+
 				factory: partition@40000 {
 					label = "factory";
 					reg = <0x40000 0x10000>;
 					read-only;
 				};
-	
+
 				partition@50000 {
 					label = "cimage";
 					reg = <0x50000 0x20000>;
 					read-only;
 				};
-	
+
 				partition@70000 {
 	                                label = "firmware";
 	                                reg = <0x00070000 0x00790000>;
@@ -88,10 +88,10 @@
 		resets = <&rstctrl 22 &rstctrl 19>;
 		reset-names = "host", "device";
 	};
- 
+
 	ethernet@10100000 {
 		status = "okay";
-		mtd-mac-address = <&factory 0x28>;
+		mtd-mac-address = <&factory 0x4>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&rgmii1_pins &rgmii2_pins &mdio_pins>;
 
@@ -144,7 +144,7 @@
 	wmac@10180000 {
 		ralink,mtd-eeprom = <&factory 0>;
 	};
-	
+
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
 		#address-cells = <1>;
@@ -202,4 +202,4 @@
 	};
 };
 
-	
+
