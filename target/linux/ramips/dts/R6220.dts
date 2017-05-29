@@ -108,14 +108,110 @@
 		reg = <0x600000 0x1c00000>;
 	};
 
+	partition@2200000 {
+		label = "ENG UI";
+		reg = <0x2200000 0x200000>;
+		read-only;
+	};
+
+	partition@2400000 {
+		label = "ML1";
+		reg = <0x2400000 0x200000>;
+		read-only;
+	};
+
+	partition@2600000 {
+		label = "ML2";
+		reg = <0x2600000 0x200000>;
+		read-only;
+	};
+
+	partition@2800000 {
+		label = "ML3";
+		reg = <0x2800000 0x200000>;
+		read-only;
+	};
+
+	partition@2a00000 {
+		label = "ML4";
+		reg = <0x2a00000 0x200000>;
+		read-only;
+	};
+
+	partition@2c00000 {
+		label = "ML5";
+		reg = <0x2c00000 0x200000>;
+		read-only;
+	};
+
 	factory: partition@2e00000 {
 		label = "factory";
-		reg = <0x2e00000 0x100000>;
+		reg = <0x2de0000 0x100000>;
+		read-only;
+	};
+
+	partition@2f00000 {
+		label = "SC Private Data";
+		reg = <0x2f00000 0x100000>;
+		read-only;
+	};
+
+	partition@3000000 {
+		label = "POT";
+		reg = <0x3000000 0x200000>;
+		read-only;
+	};
+
+	partition@3200000 {
+		label = "Traffic Meter";
+		reg = <0x3200000 0x200000>;
+		read-only;
+	};
+
+	partition@3400000 {
+		label = "DPF";
+		reg = <0x3400000 0x200000>;
+		read-only;
+	};
+
+	partition@3600000 {
+		label = "SC Nvram";
+		reg = <0x3600000 0x200000>;
+		read-only;
+	};
+
+	partition@3800000 {
+		label = "Ralink Nvram";
+		reg = <0x3800000 0x200000>;
+		read-only;
+	};
+
+	partition@3a00000 {
+		label = "Ralink Reserved";
+		reg = <0x3a00000 0x200000>;
+		read-only;
+	};
+
+	partition@3c00000 {
+		label = "ML6";
+		reg = <0x3c00000 0x200000>;
+		read-only;
+	};
+
+	partition@3e00000 {
+		label = "Upgrade Flag";
+		reg = <0x3e00000 0x100000>;
+		read-only;
+	};
+
+	partition@4000000 {
+		label = "Reserved Block3";
+		reg = <0x4000000 0x200000>;
 		read-only;
 	};
 
 	partition@4200000 {
-		label = "reserved";
+		label = "Reserved Block4";
 		reg = <0x4200000 0x3c00000>;
 	};
 };
